@@ -13,10 +13,18 @@ class YourRedisServer
 
     loop do
       request = client.gets.chomp
-      client if request == "PING"
-        response = "+PONG\r\n"
-      client.puts(response)
-    end 
+
+      case request
+      when "PING"
+        client.puts("+PONG\r\n")
+      when "QUIT"
+        client.puts("+Goodbye!\r\n")
+        break
+      else
+        client.puts("-Unknown command\r\n")
+      end
+    end
+
     client.close
   end
 end
