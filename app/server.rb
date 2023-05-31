@@ -10,8 +10,9 @@ class YourRedisServer
 
     server = TCPServer.new(@port)
     client = server.accept
-  
-    client  = "+PONG\r\n"
+
+    client.gets
+    response  = "+PONG\r\n"
     client.puts response
 
     client.close
