@@ -13,11 +13,12 @@ class YourRedisServer
 
     loop do
       request = client.gets.chomp
-      client if request == "PING"
-        response = "+PONG\r\n"
+      client  = "+PONG\r\n"
       client.puts(response)
     end
+
     client.close
+
   end
 end
 
