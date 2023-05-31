@@ -11,7 +11,6 @@ class YourRedisServer
     server = TCPServer.new(@port)
     client = server.accept
   
-    client.gets
     client  = "+PONG\r\n"
     client.puts response
 
@@ -19,4 +18,4 @@ class YourRedisServer
   end
 end
 
-YourRedisServer.new(6379).start
+YourRedisServer.new(6379).startgit 
