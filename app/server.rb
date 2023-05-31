@@ -1,19 +1,23 @@
 require "socket"
+
 class YourRedisServer
   def initialize(port)
     @port = port
   end
+
   def start
-    # You can use print statements as follows for debugging, they'll be visible when running tests.
     puts("Logs from your program will appear here!")
-    # Uncomment this block to pass the first stage
+
     server = TCPServer.new(@port)
     client = server.accept
-    client.gets
-    response = "+PONG\r"
-    client.puts response
-Explain
+
+    loop do
+      request = client.gets.chomp
+      client if request == "PING"
+        response = "$PONG\r\n"
+      client.puts(response)
     client.close
   end
 end
+
 YourRedisServer.new(6379).start
