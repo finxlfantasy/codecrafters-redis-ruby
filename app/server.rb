@@ -11,13 +11,11 @@ class YourRedisServer
     server = TCPServer.new(@port)
     client = server.accept
   
-      client.gets
-      client  = "+PONG\r\n"
-      client.puts response
-    end
+    client.gets
+    client  = "+PONG\r\n"
+    client.puts response
 
     client.close
-
   end
 end
 
