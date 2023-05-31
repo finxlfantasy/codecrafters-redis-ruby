@@ -16,6 +16,7 @@ class YourRedisServer
       client if request == "PING"
         response = "$PONG\r\n"
       client.puts(response)
+    end 
     client.close
   end
 end
