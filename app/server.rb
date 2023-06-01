@@ -1,20 +1,24 @@
 require "socket"
-
 class YourRedisServer
   def initialize(port)
     @port = port
   end
-
   def start
+    # You can use print statements as follows for debugging, they'll be visible when running tests.
     puts("Logs from your program will appear here!")
-
-    loop do
-      request = client.gets.chomp
-        response = "+PONG\r\n"
-      client.puts(response)
-    end 
+    # Uncomment this block to pass the first stage
+    server = TCPServer.new(@port)
+     client = server.accept
+    client = server.accept
+    client.gets
+    response = "+PONG\r\n"
+    client.puts response
+Explain
+Explain
     client.close
   end
 end
-
 YourRedisServer.new(6379).start
+Explain
+YourRedisServer.new(6379).start
+\ No newline at end of file
