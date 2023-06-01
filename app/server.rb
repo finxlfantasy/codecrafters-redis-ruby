@@ -8,13 +8,13 @@ class YourRedisServer
   def start
     # You can use print statements as follows for debugging, they'll be visible when running tests.
     puts("Logs from your program will appear here!")
-
     server = TCPServer.new(@port)
      client = server.accept
-    client.gets
-    response = "+PONG\r\n"
-    client.puts response
-    
+     loop do
+      client.gets
+      response = "+PONG\r\n"
+      client.puts response
+     end 
     client.close
   end
 end
