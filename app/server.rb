@@ -10,12 +10,8 @@ class YourRedisServer
 
     server = TCPServer.new(@port)
     client = server.accept
-
     loop do
-      request = client.gets.chomp
-      
-      client if request == "PING"
-        response = "+PONG\r\n"
+      response = "+PONG\r\n"
       client.puts(response)
     end 
 
@@ -23,4 +19,4 @@ class YourRedisServer
   end
 end
 
-YourRedisServer.new(6379).startis
+YourRedisServer.new(6379).start
